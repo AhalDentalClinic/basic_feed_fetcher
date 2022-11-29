@@ -3,17 +3,18 @@ import 'package:flutter/foundation.dart';
 import 'social_media_post_models.dart';
 
 class InstagramPagingModel {
-  InstagramPagingModel({
-    required List<InstagramPostModel> instaPostModels,
-    this.nextPostsUrl,
-  }) : _instagramPostModels = ValueNotifier(instaPostModels);
+  InstagramPagingModel() : _instagramPostModels = ValueNotifier(List.empty(growable: true));
 
   InstagramPagingModel.errored()
       : _instagramPostModels = ValueNotifier([InstagramPostModel.errored()]),
-        nextPostsUrl = null;
+        _nextPostsUrl = null;
 
   final ValueNotifier<List<InstagramPostModel>> _instagramPostModels;
   ValueListenable<List<InstagramPostModel>> get instagramPostModels => _instagramPostModels;
 
-  final Uri? nextPostsUrl;
+  Uri? _nextPostsUrl;
+
+  void setInstagramPostModels(List<InstagramPostModel> setPostModels) =>
+      _instagramPostModels.value.addAll(setPostModels);
+  set nextPostUrl(Uri? setNextPostUrl) => _nextPostsUrl = setNextPostUrl;
 }

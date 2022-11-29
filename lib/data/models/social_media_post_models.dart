@@ -1,10 +1,5 @@
 import '../constants/const_values.dart';
-
-enum InstaMediaType {
-  image,
-  video,
-  carouselAlbum;
-}
+import '../enums/social_media_enums.dart';
 
 class InstagramPostModel {
   const InstagramPostModel({

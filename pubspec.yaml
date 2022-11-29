@@ -1,6 +1,6 @@
 name: basic_feed_fetcher
 description: An all-inclusive plugin, for fetching your own posts, from Facebook, Instagram and Twitter.
-version: 0.0.1+1
+version: 0.0.1+2
 repository: 'https://github.com/AhalDentalClinic/basic_feed_fetcher'
 homepage: 'https://github.com/AhalDentalClinic/basic_feed_fetcher'
 issue_tracker: 'https://github.com/AhalDentalClinic/basic_feed_fetcher/issues'

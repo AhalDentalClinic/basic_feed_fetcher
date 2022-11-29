@@ -17,16 +17,15 @@ class InstagramBasicDisplay {
 
   final SocialMediaApi _socialMediaApi = SocialMediaApi();
 
-  late final InstagramPagingModel _instagramPagingModel;
+  final InstagramPagingModel _instagramPagingModel = InstagramPagingModel();
   ValueListenable<List<InstagramPostModel>> get instagramPosts =>
       _instagramPagingModel.instagramPostModels;
 
   final Completer isReady = Completer();
 
-  FutureOr<void> _init() async {
-    _instagramPagingModel = await _socialMediaApi.fetchInstagramPosts(
-      key: _key,
-    );
+  Future<void> _init() async {
+    await _socialMediaApi.fetchInstagramPosts(
+        key: _key, fillableInstagramPagingModel: _instagramPagingModel);
 
     isReady.complete();
   }

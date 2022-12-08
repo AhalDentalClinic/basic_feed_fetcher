@@ -22,8 +22,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    super.initState();
     initPluginState();
+
+    super.initState();
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -53,28 +54,29 @@ class _MyAppState extends State<MyApp> {
                   return const CircularProgressIndicator();
                 case ConnectionState.done:
                   return ValueListenableBuilder<List<InstagramPostModel>>(
-                      valueListenable: widget._instagramBasicDisplay.instagramPosts,
-                      builder: (context, final instagramPosts, _) => GridView.count(
-                            crossAxisCount: 7,
-                            shrinkWrap: true,
-                            children: [
-                              for (final instaPost in instagramPosts)
-                                Image.network(
-                                  instaPost.thumbnailUrl.toString(),
-                                  loadingBuilder: (context, child, loadingProgress) =>
-                                      (loadingProgress == null)
-                                          ? child
-                                          : Center(
-                                              child: CircularProgressIndicator(
-                                                value: loadingProgress.expectedTotalBytes != null
-                                                    ? loadingProgress.cumulativeBytesLoaded /
-                                                        loadingProgress.expectedTotalBytes!
-                                                    : null,
-                                              ),
-                                            ),
-                                ),
-                            ],
-                          ));
+                    valueListenable: widget._instagramBasicDisplay.instagramPosts,
+                    builder: (context, final instagramPosts, _) => GridView.count(
+                      crossAxisCount: 7,
+                      shrinkWrap: true,
+                      children: [
+                        for (final instaPost in instagramPosts)
+                          Image.network(
+                            instaPost.thumbnailUrl.toString(),
+                            loadingBuilder: (context, child, loadingProgress) =>
+                                (loadingProgress == null)
+                                    ? child
+                                    : Center(
+                                        child: CircularProgressIndicator(
+                                          value: loadingProgress.expectedTotalBytes != null
+                                              ? loadingProgress.cumulativeBytesLoaded /
+                                                  loadingProgress.expectedTotalBytes!
+                                              : null,
+                                        ),
+                                      ),
+                          ),
+                      ],
+                    ),
+                  );
               }
             },
           ),

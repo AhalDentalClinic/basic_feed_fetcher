@@ -25,7 +25,9 @@ class InstagramBasicDisplay {
 
   Future<void> _init() async {
     await _socialMediaApi.fetchInstagramPosts(
-        key: _key, fillableInstagramPagingModel: _instagramPagingModel);
+      key: _key,
+      fillableInstagramPagingModel: _instagramPagingModel,
+    );
 
     isReady.complete();
   }
